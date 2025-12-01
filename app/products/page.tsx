@@ -97,7 +97,6 @@ export default function ProductsPage() {
     setIsModalOpen(true);
   };
 
-  // Filter and search logic
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
       const matchesSearch = product.title
@@ -109,14 +108,12 @@ export default function ProductsPage() {
     });
   }, [products, searchTerm, categoryFilter]);
 
-  // Pagination logic
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const paginatedProducts = useMemo(() => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     return filteredProducts.slice(startIndex, startIndex + itemsPerPage);
   }, [filteredProducts, currentPage]);
 
-  // Reset to page 1 when filters change
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, categoryFilter]);
@@ -132,7 +129,6 @@ export default function ProductsPage() {
         <Button onClick={openAddModal}>Add New Product</Button>
       </div>
 
-      {/* Search and Filter Section */}
       <div className="flex gap-4 mb-6">
         <div className="flex-1">
           <Input
@@ -156,19 +152,15 @@ export default function ProductsPage() {
         </Select>
       </div>
 
-      {/* Results Info */}
       <div className="mb-4 text-sm text-gray-600">
         Showing {paginatedProducts.length} of {filteredProducts.length} products
       </div>
-
-      {/* Products Table */}
       <ProductTable 
         products={paginatedProducts} 
         onDelete={handleDelete}
         onEdit={openEditModal}
       />
 
-      {/* Pagination */}
       {totalPages > 1 && (
         <div className="flex justify-center items-center gap-2 mt-6">
           <Button
@@ -202,7 +194,6 @@ export default function ProductsPage() {
         </div>
       )}
 
-      {/* Product Modal */}
       <ProductModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

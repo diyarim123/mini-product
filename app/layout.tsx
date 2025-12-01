@@ -17,7 +17,6 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className="min-h-screen bg-gray-50">
-          {/* Sidebar */}
           <aside className="fixed top-0 left-0 h-full w-64 bg-white border-r border-gray-200 shadow-sm">
             <div className="p-6">
               <h1 className="text-2xl font-bold text-gray-800">Product Dashboard</h1>
@@ -44,7 +43,6 @@ export default function RootLayout({
             </nav>
           </aside>
 
-          {/* Main Content */}
           <main className="ml-64 p-8">
             {children}
           </main>
